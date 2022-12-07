@@ -18,7 +18,7 @@ public class CharacterData : ScriptableObject
 {
     [SerializeField]
     public CharacterInfo character;
-    public CharacterInfo retrievedData;
+    public CharacterInfo retrievedData { get; set; }
 
     public void SaveData()
     {
