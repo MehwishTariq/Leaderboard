@@ -28,14 +28,14 @@ public class CharacterDataEditor : Editor
         {
             myScript.SaveData();
         }
-
+        serializedObject.ApplyModifiedProperties();
         EditorGUILayout.PropertyField(retrievedData, true);
 
         if (GUILayout.Button("LoadData"))
         {
             myScript.LoadData();
         }
-     
+
         serializedObject.ApplyModifiedProperties();
     }
 }

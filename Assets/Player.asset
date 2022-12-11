@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character:
     name: Mehwish_Playboi
-    rank: 2
+    rank: 0
     score: 3
   retrievedData:
     name: Mehwish_Playboi

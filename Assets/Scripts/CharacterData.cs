@@ -9,7 +9,8 @@ using UnityEngine;
 public class CharacterInfo
 {
     public string name;
-    public int rank;
+    //[HideInInspector]
+    public int rank { get; set; }
     public float score;
 }
 
@@ -18,7 +19,7 @@ public class CharacterData : ScriptableObject
 {
     [SerializeField]
     public CharacterInfo character;
-    public CharacterInfo retrievedData { get; set; }
+    public CharacterInfo retrievedData;
 
     public void SaveData()
     {
