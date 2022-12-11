@@ -10,6 +10,7 @@ using UnityEngine;
 public class CharacterInfo
 {
     public string name;
+    [HideInInspector]
     public int rank { get; set; }
     public float score;
 }
