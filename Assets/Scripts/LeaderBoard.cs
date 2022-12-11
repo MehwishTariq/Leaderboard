@@ -26,16 +26,38 @@ public class LeaderBoard : MonoBehaviour
     public List<CharacterData> players = new List<CharacterData>();
     [SerializeField]
     List<CharacterData> sorted;
+
+    public List<DataBar> dataBars = new List<DataBar>();
     public RectTransform dataBarParent;
     public DataBar dataBarPrefab;
-     void Start()
+    void Start()
     {
         
     }
-    [ContextMenu("GenerateDataBar")]
+
+    [ContextMenu("RandomPlayerWon")]
+    public void RandomPlayerWon()
+    {
+        int x = Random.Range(0, players.Count);
+        Debug.Log("Winer:"+ players[x].character.name);
+        players[x].character.score += Random.Range(50, 100);
+        for (int i = 0; i < players.Count; i++)
+        {
+            if(i!=x)
+                players[i].character.score += Random.Range(20, 50);
+        }
+        GenerateDataBar();
+    }
     public void GenerateDataBar()
     {
-        sorted = null;
+        for (int i = 0; i < dataBars.Count; i++)
+        {
+            Destroy(dataBars[i].gameObject);
+
+        }
+        
+        dataBars.Clear();
+        sorted.Clear();
         sorted = new List<CharacterData>();
         for (int  i =0;i<players.Count; i++)
         {
@@ -43,17 +65,17 @@ public class LeaderBoard : MonoBehaviour
         }
         
         sorted.Sort(SortByScore);
+        int rank = 1;
         for (int i = sorted.Count-1; i >=0 ; i--)
-        {
-            //ChangeRank?
+        {  
+            sorted[i].character.rank = rank;
             DataBar dataBar = Instantiate(dataBarPrefab, dataBarParent);
+            dataBars.Add(dataBar);
             SetData(dataBar, sorted[i]);
+            rank++;
         }
-        //foreach (var item in sorted)
-        //{
-        //    DataBar dataBar= Instantiate(dataBarPrefab, dataBarParent);
-        //    SetData(dataBar,item);
-        //}
+        DataHandler.Instance.DataUpdate();
+
     }
     public void SetData(DataBar dataBar,CharacterData c)
     {
