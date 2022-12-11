@@ -14,7 +14,7 @@ public class CharacterInfo
 }
 
 [CreateAssetMenu(fileName = "CharacterData", menuName = "Data/Character", order = 1)]
-public class CharacterData : ScriptableObject
+public class CharacterData : ScriptableObject 
 {
     [SerializeField]
     public CharacterInfo character;
