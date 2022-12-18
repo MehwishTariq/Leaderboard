@@ -14,7 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character:
     name: SubashBro
-    score: 3
-  retrievedData:
-    name: SubashBro
-    score: 3
+    score: 332

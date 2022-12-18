@@ -6,14 +6,14 @@ using UnityEngine;
 [CustomEditor(typeof(CharacterData))]
 public class CharacterDataEditor : Editor
 {
-    SerializedProperty characterData, retrievedData;
+    SerializedProperty characterData;
     CharacterData myScript;
 
     private void OnEnable()
     {
         myScript = (CharacterData)target;
         characterData = serializedObject.FindProperty("character");
-        retrievedData = serializedObject.FindProperty("retrievedData");
+      
     }
 
 
@@ -26,16 +26,15 @@ public class CharacterDataEditor : Editor
 
         if (GUILayout.Button("SaveData"))
         {
-            myScript.SaveData();
+            myScript.CreateData();
         }
-        serializedObject.ApplyModifiedProperties();
-        EditorGUILayout.PropertyField(retrievedData, true);
+
 
         if (GUILayout.Button("LoadData"))
         {
             myScript.LoadData();
         }
-
+     
         serializedObject.ApplyModifiedProperties();
     }
 }
